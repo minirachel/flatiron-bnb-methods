@@ -15,7 +15,7 @@ class City < ActiveRecord::Base
 
 
     self.listings.select do |l|
-      l.reservations. do |r| 
+      l.reservations.select do |r| 
         res_date_start = r.checkin
         res_date_end = r.checkout
         r.status == "available" && (search_date_start <= res_date_end) && (search_date_end >= res_date_start)
