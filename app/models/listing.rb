@@ -15,6 +15,9 @@ class Listing < ActiveRecord::Base
   after_save :change_user_to_host
   before_destroy :remove_host
 
+  def average_review_rating
+    self.reviews.average(:rating)
+  end
 
   private
 
@@ -27,6 +30,7 @@ class Listing < ActiveRecord::Base
       host.update(host: false)
     end
   end
+
 
   # def self.available(start_date, end_date)
   #   if start_date && end_date
